@@ -1,0 +1,7 @@
+{
+    "properties": {
+        "group_membership": {
+            "type": "long"
+        }
+    }
+}
