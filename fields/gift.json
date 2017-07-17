@@ -1,0 +1,28 @@
+{
+    "properties": {
+      "gifts": {
+        "type": "nested",
+        "properties": {
+          "amount": {
+            "type": "long"
+          },
+          "gift_type": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "frequency":{
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "scheduled": {
+            "type": "date",
+            "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd HH:mm||yyyy-MM-dd||epoch_millis"
+          },
+          "gift_date": {
+            "type": "date",
+            "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd HH:mm||yyyy-MM-dd||epoch_millis"
+          }
+        }
+      }
+    }
+}
