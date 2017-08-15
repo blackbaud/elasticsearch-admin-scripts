@@ -1,0 +1,17 @@
+{
+    "properties": {
+        "wealth": {
+            "type": "object",
+            "properties": {
+                "score": {
+                  "type": "integer"
+                },
+                "date_scored": {
+                    "type" : "date",
+                    "format" : "yyyy/MM/dd HH:mm:ss||yyyy-MM-dd||yyyy/MM/dd||epoch_millis",
+                    "index" : "not_analyzed"
+                }
+            }
+        }
+    }
+}
