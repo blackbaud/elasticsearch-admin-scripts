@@ -21,6 +21,12 @@
           "gift_date": {
             "type": "date",
             "format": "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd HH:mm||yyyy-MM-dd||epoch_millis"
+          },
+          "campaign_id": {
+            "type": "long"
+          },
+          "form_id": {
+            "type": "long"
           }
         }
       }
