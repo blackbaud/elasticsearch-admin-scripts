@@ -1,0 +1,8 @@
+{
+    "properties": {
+        "date_of_birth": {
+            "type": "date",
+            "format": "yyyy/MM/dd||epoch_millis"
+        }
+    }
+}

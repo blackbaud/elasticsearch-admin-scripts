@@ -7,4 +7,4 @@ echo "Index name $indexName"
 buildElasticSearchUrl elasticSearchUrl $environment $indexName
 echo $elasticSearchUrl
 
-curl -X GET $elasticSearchUrl/_mapping/$documentType | jq ''
+curl -k --user $username -X GET $elasticSearchUrl/_mapping/$documentType | jq ''
