@@ -4,6 +4,6 @@ source "./indexUtil.sh"
 buildElasticSearchCatUrl elasticSearchCatUrl $environment
 echo $elasticSearchCatUrl
 
-curl -X GET $elasticSearchCatUrl/indices?v
-
-
+echo $username
+echo $password
+curl -k --user $username -X GET $elasticSearchCatUrl/indices?v

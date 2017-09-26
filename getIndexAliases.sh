@@ -6,4 +6,4 @@ echo "Environment $environment"
 buildElasticSearchUrl elasticSearchUrl $environment $indexName
 echo "Elastic search url: $elasticSearchUrl"
 
-curl -X GET $elasticSearchUrl/_alias/*
+curl -k --user $username -X GET $elasticSearchUrl/_alias/*
