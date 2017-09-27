@@ -1,5 +1,7 @@
 #! /bin/bash
 
+clusterName='es-data'
+
 while [ "$1" != "" ]; do
     case $1 in
          --user )
@@ -60,7 +62,7 @@ function buildElasticSearchHostName() {
     if [ "$_env" == 'local' ]; then
         elasticSearchHostName='http://local.docker:9200/'
     else
-        elasticSearchHostName='http://es-data.'"$_env"'.blackbaudcloud.com:9200/'
+        elasticSearchHostName='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/'
     fi
     eval $_elasticSearchHostName="'$elasticSearchHostName'"    
 }
@@ -87,7 +89,7 @@ function buildElasticSearchCatUrl() {
 function buildElasticSearchReindexUrl() {
     local _elasticSearchUrl=$1
     local _env=$2
-    url='http://es-data.'"$_env"'.blackbaudcloud.com:9200/_reindex'
+    url='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/_reindex'
     eval $_elasticSearchUrl="'$url'"
 }
 
@@ -96,7 +98,7 @@ function buildElasticSearchUrlToAddNewField() {
     local _env=$2
     local _idxName=$3
     local _docType=$4
-    url='http://es-data.'"$_env"'.blackbaudcloud.com:9200/'"$_idxName"'/_mapping/'"$_docType"
+    url='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/'"$_idxName"'/_mapping/'"$_docType"
     eval $_elasticSearchUrl="'$url'"
 }
 
@@ -106,14 +108,9 @@ function buildSearchUrl() {
     local _idxName=$3
     local _docType=$4
 
-    if [ "$_env" == 'local' ]; then
-        elasticSearchHostName='http://local.docker:9200'
-    elif [ "$_env" == "oscf-prod" ]; then
-        elasticSearchHostName='http://elasticsearch-query.'"$_env"'.blackbaudcloud.com:9200'
-    else
-        elasticSearchHostName='http://es-data.'"$_env"'.blackbaudcloud.com:9200'
-    fi
-    url="$elasticSearchHostName"'/'"$_idxName"'/'"$_docType"'/_search'
+    buildElasticSearchHostName elasticSearchHostName $_env
+
+    url="$elasticSearchHostName""$_idxName"'/'"$_docType"'/_search'
     eval $_elasticSearchUrl="'$url'"    
 }
 
@@ -123,14 +120,9 @@ function buildAggregationsQueryUrl() {
     local _idxName=$3
     local _docType=$4
 
-    if [ "$_env" == 'local' ]; then
-        elasticSearchHostName='http://local.docker:9200'
-    elif [ "$_env" == "oscf-prod" ]; then
-        elasticSearchHostName='http://elasticsearch-6.'"$_env"'.blackbaudcloud.com:9200'
-    else
-        elasticSearchHostName='http://es-data.'"$_env"'.blackbaudcloud.com:9200'
-    fi
-    url="$elasticSearchHostName"'/'"$_idxName"'/'"$_docType"'/_search'
+    buildElasticSearchHostName elasticSearchHostName $_env
+
+    url="$elasticSearchHostName""$_idxName"'/'"$_docType"'/_search'
     eval $_elasticSearchUrl="'$url'"  
 }
 
@@ -139,6 +131,6 @@ function buildUpdateByQueryUrl() {
     local _env=$2
     local _idxName=$3
     local _docType=$4
-    url='http://es-data.'"$_env"'.blackbaudcloud.com:9200/'"$_idxName"'/'"$_docType"'/_update_by_query'
+    url='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/'"$_idxName"'/'"$_docType"'/_update_by_query'
     eval $_elasticSearchUrl="'$url'"
 }

@@ -1,4 +1,10 @@
 #! /bin/bash
+#
+# Create new index with the given name.
+# Index schema defined in specified file. Must be valid json.
+# Required args: user, env, index, docMappingFile
+#
+
 source "./indexUtil.sh"
 
 echo "Environment $environment"
@@ -7,4 +13,4 @@ echo "Doc mapping file $docMappingFile"
 
 buildElasticSearchUrl elasticSearchUrl $environment $indexName
 
-curl -X POST $elasticSearchUrl -d "@$docMappingFile"
+curl -k --user $username -X POST $elasticSearchUrl -d "@$docMappingFile"
