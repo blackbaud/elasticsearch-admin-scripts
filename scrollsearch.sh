@@ -5,6 +5,9 @@
 #
 # Required args: user, env, index, docType, query
 #
+# Example usage:
+# ./scrollsearch --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docType "constituent" --query "search.json"
+#
 
 source "./indexUtil.sh"
 

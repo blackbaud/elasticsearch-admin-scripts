@@ -3,6 +3,9 @@
 # Run the given aggregation query for the given index and docType. 
 # Required args: user, env, index, docType, query
 #
+# Example usage:
+# ./getAggregations --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docType "constituent" --query "aggregationQuery.json"
+#
 
 source "./indexUtil.sh"
 

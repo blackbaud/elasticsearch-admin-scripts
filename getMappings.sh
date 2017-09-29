@@ -1,7 +1,10 @@
 #! /bin/bash
 #
-# Get the mapping for the given index and document type.
+# Get the mapping for the specified document type on a given index.
 # Required fields: user, env, index, docType
+#
+# Example usage:
+# ./getMappings --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docType "constituent"
 #
 
 source "./indexUtil.sh"

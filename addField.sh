@@ -4,6 +4,9 @@
 # Field mapping is defined in specified file. Must be valid json.
 # Required args: user, env, index, docType, file
 #
+# Example usage:
+# ./addField --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docType "constituent" --file "./field1.json"
+#
 
 source "./indexUtil.sh"
 

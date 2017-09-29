@@ -5,6 +5,10 @@
 # 
 # Required args: user, env, index, docType, update
 # 
+# Example usage:
+# ./updateByQuery --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docType "constituent" --update "query.json"
+#
+
 source "./indexUtil.sh"
 
 buildUpdateByQueryUrl elasticSearchUrl $environment $indexName $documentType

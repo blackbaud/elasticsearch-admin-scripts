@@ -4,6 +4,9 @@
 # Index schema defined in specified file. Must be valid json.
 # Required args: user, env, index, docMappingFile
 #
+# Example usage:
+# ./createIndex.sh --user "elastic" --env "oscf-dev" --index "lonxt-dev" --docMappingFile "./indexMapping.json"
+#
 
 source "./indexUtil.sh"
 

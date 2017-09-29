@@ -20,10 +20,6 @@ while [ "$1" != "" ]; do
             shift
             documentType=$1
             ;;
-        --newIndex )
-            shift
-            newIndexName=$1
-            ;;
         --alias )
             shift
             alias=$1
