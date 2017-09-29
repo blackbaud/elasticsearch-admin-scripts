@@ -1,4 +1,9 @@
 #! /bin/bash
+#
+# Reindex from lonxt index to lonxt-v1 index.
+# 
+# DEPRECATED
+
 source "./indexUtil.sh"
 
 buildElasticSearchReindexUrl elasticSearchUrl $environment

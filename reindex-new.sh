@@ -1,4 +1,8 @@
 #! /bin/bash
+#
+# Unfinished script to reindex data between indexes.
+#
+
 source "./indexUtil.sh"
 
 # list of fields whose data we want to copy
