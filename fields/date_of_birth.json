@@ -2,7 +2,13 @@
     "properties": {
         "date_of_birth": {
             "type": "date",
-            "format": "yyyy/MM/dd||epoch_millis"
+            "format": "yyyy/MM/dd||epoch_millis",
+            "fields": {
+                "y2k_birthday": {
+                    "type": "date",
+                    "format": "yyyy/MM/dd||epoch_millis"
+                }
+            }
         }
     }
 }
