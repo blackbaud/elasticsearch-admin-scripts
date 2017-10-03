@@ -1,0 +1,8 @@
+{
+    "properties": {
+        "y2k_birthday": {
+            "type": "date",
+            "format": "yyyy/MM/dd||epoch_millis"
+        }
+    }
+}
