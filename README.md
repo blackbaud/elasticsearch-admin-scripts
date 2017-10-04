@@ -72,6 +72,9 @@ The path of a file containing the body of the update request that will be made a
 #### `file`
 The path of a file containing some json used to add or update some aspect of the cluster or index. Script-dependent.
 
+#### `slices`
+A positive integer value indicating the number of slices Elasticsearch should use in an update by query. Note: this is only applicable to the `updateByQueryLongRunning` script. Note also that Elasticsearch suggests using a multiple of the number of shards on the index, with the best performance seen using the exact number of shards on the index.
+
 ## Prettifying output
 Output of the scripts being run is in unformatted json. We highly recommend you install and use `jq`.
 
