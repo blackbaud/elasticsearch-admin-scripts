@@ -2,7 +2,9 @@
 
 This repo stores the Cerebro team's scripts that make it easier to manage Elasticsearch. Detailed descriptions, including required arguments and example usages, are in the scripts themselves.
 
-## indexUtil.sh
+## Bash scripts
+
+### indexUtil.sh
 Every script makes use of `indexUtil.sh` for argument handling and url building. Possible arguments and examples follow.
 
 ### Required args
@@ -72,6 +74,19 @@ The path of a file containing the body of the update request that will be made a
 #### `file`
 The path of a file containing some json used to add or update some aspect of the cluster or index. Script-dependent.
 
+#### `slices`
+A positive integer value indicating the number of slices Elasticsearch should use in an update by query. Note: this is only applicable to the `updateByQueryLongRunning` script. Note also that Elasticsearch suggests using a multiple of the number of shards on the index, with the best performance seen using the exact number of shards on the index.
+
 ## Prettifying output
 Output of the scripts being run is in unformatted json. We highly recommend you install and use `jq`.
 
+## Task monitoring script
+We have a handy dandy little python script to report out Elasticsearch task info, which is most useful like so:
+```bash
+watch -n 3 "curl -# --user 'elastic:PASSWORD' 'http://es-master.oscf-prod.blackbaudcloud.com:9200/_tasks?detailed=true&actions=*byquery' | python3 taskStatus.py
+```
+
+Things to note:
+* `-n 3` indicates the watch will update every 3 seconds.
+* `PASSWORD` will need to change.
+* `actions=*byquery` specifically targets Update By Query tasks. This can be changed to monitor other tasks (e.g.`*reindex`).

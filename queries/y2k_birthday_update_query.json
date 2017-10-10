@@ -1,0 +1,15 @@
+{
+    "query": {
+        "bool": {
+            "filter": {
+                "exists": { "field": "date_of_birth" }
+            },
+            "must_not": [ { "exists": { "field": "y2k_birthday" } } ]
+        }
+    },
+    "script": {
+        "lang": "painless",
+        "inline": "def df = DateTimeFormatter.ofPattern(\"yyyy/MM/dd\"); try { def birthday = LocalDate.parse(ctx._source.date_of_birth, df); def birthday2k = birthday.withYear(2000); ctx._source.y2k_birthday = birthday2k.format(df); } catch (DateTimeParseException e) { ctx.op = \"noop\"; }"
+    },
+    "conflicts": "proceed"
+}
