@@ -22,7 +22,7 @@
 source "./indexUtil.sh"
 
 buildUpdateByQueryUrl elasticSearchUrl $environment $indexName $documentType
-elasticSearchUrl="$elasticSearchUrl?wait_for_completion=false";
+elasticSearchUrl="$elasticSearchUrl?wait_for_completion=false&conflicts=proceed";
 
 if [ -z "${slices+''}" ]; then
   echo "You must provide an argument with --slices. Exiting."

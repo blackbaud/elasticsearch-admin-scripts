@@ -9,7 +9,7 @@
     },
     "script": {
         "lang": "painless",
-        "inline": "def df = DateTimeFormatter.ofPattern(\"yyyy/MM/dd\"); def birthday = LocalDate.parse(ctx._source.date_of_birth, df).withYear(2000); ctx._source.y2k_birthday = birthday;"
+        "inline": "def df = DateTimeFormatter.ofPattern(\"yyyy/MM/dd\"); try { def birthday = LocalDate.parse(ctx._source.date_of_birth, df); def birthday2k = birthday.withYear(2000); ctx._source.y2k_birthday = birthday2k.format(df); } catch (DateTimeParseException e) { ctx.op = \"noop\"; }"
     },
     "conflicts": "proceed"
 }

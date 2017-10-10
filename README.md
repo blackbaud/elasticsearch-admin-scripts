@@ -2,7 +2,9 @@
 
 This repo stores the Cerebro team's scripts that make it easier to manage Elasticsearch. Detailed descriptions, including required arguments and example usages, are in the scripts themselves.
 
-## indexUtil.sh
+## Bash scripts
+
+### indexUtil.sh
 Every script makes use of `indexUtil.sh` for argument handling and url building. Possible arguments and examples follow.
 
 ### Required args
@@ -77,4 +79,11 @@ A positive integer value indicating the number of slices Elasticsearch should us
 
 ## Prettifying output
 Output of the scripts being run is in unformatted json. We highly recommend you install and use `jq`.
+
+## Task monitoring script
+We have a handy dandy little python script to report out Elasticsearch task info, which is most useful like so:
+```bash
+watch -n 3 "curl -# --user 'elastic:PASSWORD' 'http://es-master.oscf-prod.blackbaudcloud.com:9200/_tasks?detailed=true&actions=*reindex' | python3 taskStatus.py
+```
+where `-n 3` is the watch's update interval in seconds. Note that `PASSWORD` needs to change.
 
