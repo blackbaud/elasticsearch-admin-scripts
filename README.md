@@ -83,7 +83,10 @@ Output of the scripts being run is in unformatted json. We highly recommend you 
 ## Task monitoring script
 We have a handy dandy little python script to report out Elasticsearch task info, which is most useful like so:
 ```bash
-watch -n 3 "curl -# --user 'elastic:PASSWORD' 'http://es-master.oscf-prod.blackbaudcloud.com:9200/_tasks?detailed=true&actions=*reindex' | python3 taskStatus.py
+watch -n 3 "curl -# --user 'elastic:PASSWORD' 'http://es-master.oscf-prod.blackbaudcloud.com:9200/_tasks?detailed=true&actions=*byquery' | python3 taskStatus.py
 ```
-where `-n 3` is the watch's update interval in seconds. Note that `PASSWORD` needs to change.
 
+Things to note:
+* `-n 3` indicates the watch will update every 3 seconds.
+* `PASSWORD` will need to change.
+* `actions=*byquery` specifically targets Update By Query tasks. This can be changed to monitor other tasks (e.g.`*reindex`).
