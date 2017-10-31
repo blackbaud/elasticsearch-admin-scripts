@@ -1,0 +1,8 @@
+{
+    "properties": {
+        "country_normalized" : {
+            "type" : "keyword",
+            "index" : "true"
+        }
+    }
+}
