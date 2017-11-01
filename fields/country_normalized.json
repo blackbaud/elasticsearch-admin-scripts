@@ -1,8 +1,13 @@
 {
     "properties": {
-        "country_normalized" : {
-            "type" : "keyword",
-            "index" : "true"
-        }
+	    "address" : {
+			"type" : "nested",
+			"properties" : {
+				"country_normalized" : {
+				    "type" : "keyword",
+				    "index" : "true"
+				}
+			}
+    	}
     }
 }
