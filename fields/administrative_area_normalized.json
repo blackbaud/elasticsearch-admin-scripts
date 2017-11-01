@@ -1,0 +1,13 @@
+{
+    "properties": {
+        "address" : {
+            "type" : "nested",
+            "properties" : {
+                "administrative_area_normalized" : {
+                    "type" : "keyword",
+                    "index" : "true"
+                }
+            }
+        }
+    }
+}
