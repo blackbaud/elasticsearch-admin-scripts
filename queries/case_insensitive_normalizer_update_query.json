@@ -1,0 +1,46 @@
+{
+  "query": {
+    "nested": {
+    "path": "address",
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "exists": {
+              "field": "address.sub_administrative_area"
+            }
+          },
+          {
+            "exists": {
+              "field": "address.locality"
+            }
+          },
+          {
+            "exists": {
+              "field": "address.postal_code_normalized"
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "exists": {
+              "field": "address.sub_administrative_area.lowercase"
+            }
+          },
+          {
+            "exists": {
+              "field": "address.locality.lowercase"
+            }
+          },
+          {
+            "exists": {
+              "field": "address.postal_code_normalized.lowercase"
+            }
+          }
+        ]
+      }
+    }  
+    }
+  },
+    "conflicts": "proceed"
+}

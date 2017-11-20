@@ -3,7 +3,7 @@
         "address" : {
             "type" : "nested",
             "properties" : {
-                "sub_administrative_area_normalized" : {
+                "sub_administrative_area" : {
                     "type" : "keyword",
                     "index" : "true",
                     "fields" : {
