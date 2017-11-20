@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "address" : {
+            "type" : "nested",
+            "properties" : {
+                "postal_code_normalized" : {
+                    "type" : "keyword",
+                    "index" : "true",
+                    "fields" : {
+                        "lowercase" : {
+                            "type" : "keyword",
+                            "normalizer" : "case_insensitive"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "properties": {
+        "address" : {
+            "type" : "nested",
+            "properties" : {
+                "locality" : {
+                    "type" : "keyword",
+                    "index" : "true",
+                    "fields" : {
+                        "lowercase" : {
+                            "type" : "keyword",
+                            "normalizer" : "case_insensitive"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

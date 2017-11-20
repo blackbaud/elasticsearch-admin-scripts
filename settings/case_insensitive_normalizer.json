@@ -1,0 +1,11 @@
+{
+  "analysis": {
+    "normalizer": {
+      "case_insensitive": {
+        "type": "custom",
+        "char_filter": [],
+        "filter": ["lowercase"]
+      }
+    }
+  }
+}

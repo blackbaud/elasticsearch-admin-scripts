@@ -44,6 +44,10 @@ while [ "$1" != "" ]; do
             shift
             slices=$1
             ;;
+        --watch )
+            shift
+            watch=$1
+            ;;
         *)
             usage
             exit 1
@@ -133,5 +137,14 @@ function buildUpdateByQueryUrl() {
     local _docType=$4
     local _slices=$5
     url='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/'"$_idxName"'/'"$_docType"'/_update_by_query'
+    eval $_elasticSearchUrl="'$url'"
+}
+
+function buildTasksUrl() {
+    local _elasticSearchUrl=$1
+    local _env=$2
+    local _idxName=$3
+    local _docType=$4
+    url='http://'"$clusterName"'.'"$_env"'.blackbaudcloud.com:9200/_tasks'
     eval $_elasticSearchUrl="'$url'"
 }
